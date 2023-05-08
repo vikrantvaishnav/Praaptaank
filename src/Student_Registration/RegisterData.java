@@ -20,7 +20,7 @@ public class RegisterData {
         try {
             String query = "insert into "
                     + "student_personal_detail"
-                    + "(Pid,sname,fname,mname,dob,gender,mailid,mobile_no,password) "
+                    + "(Praaptaank_id,sname,fname,mname,dob,gender,mailid,mobile_no,password) "
                     + "values(?,?,?,?,?,?,?,?,?)";
             ps = c.prepareStatement(query);
             ps.setString(1, student.getPid());

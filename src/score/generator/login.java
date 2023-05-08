@@ -16,7 +16,7 @@ public class login extends JFrame implements ActionListener{
     JButton login,cancel,signup;
     public login()
     {
-        super("Praptank:-Login");
+        super("Praaptank:-Login");
         setBounds(600,250,900,600);
 //        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);

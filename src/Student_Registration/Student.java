@@ -39,7 +39,7 @@ public class Student implements  Serializable{
        
     }
 
-    public Student( String Pid,String sname,String fname,String mname, Date dob, String gender, String mailId, String mobileNo, String password, String rePassword, Timestamp addDate) {
+    public  Student( String Pid,String sname,String fname,String mname, Date dob, String gender, String mailId, String mobileNo, String password, String rePassword, Timestamp addDate) {
         
         this.PId = Pid;
         this.Sname = sname;
@@ -56,7 +56,7 @@ public class Student implements  Serializable{
 
     @Override
     public String toString() {
-        return "Student{" + ", pid=" + PId+ ", sname=" + Sname+ ", fname=" + Fname + ", mname=" + Mname+ ", dob=" + dob + ", gender=" + gender + ", mailId=" + mailId + ", mobileNo=" + mobileNo + ", password=" + password + ", rePassword=" + rePassword +  '}';
+        return "Student{" + ", Praaptaank_id=" + PId+ ", sname=" + Sname+ ", fname=" + Fname + ", mname=" + Mname+ ", dob=" + dob + ", gender=" + gender + ", mailId=" + mailId + ", mobileNo=" + mobileNo + ", password=" + password + ", rePassword=" + rePassword +  '}';
     }
 
     public String getPid() {
