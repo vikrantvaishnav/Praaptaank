@@ -1,6 +1,6 @@
 package Student_Registration;
 
-import College_Registration.Account;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.Date;
