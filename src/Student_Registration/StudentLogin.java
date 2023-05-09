@@ -16,7 +16,7 @@ public class StudentLogin extends JFrame implements ActionListener {
 
 	public StudentLogin() {
 		super("Praptank | Student Login");
-		setBounds(250, 50, 900, 600);
+		setBounds(500, 100, 900, 600);
 //        setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -103,10 +103,10 @@ public class StudentLogin extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent ae) {
 		if (ae.getSource() == login) {
-            String id = username.getText();
-            String pass = password.getText();
-            
-            try{
+			String id = username.getText();
+			String pass = password.getText();
+
+			try {
 //                ConnectJDBC c = new ConnectJDBC();
 //                String query = "select * from login where Praaptaank_Id ='"+id+"' and Password = '"+pass+"'";
 //                
@@ -122,19 +122,18 @@ public class StudentLogin extends JFrame implements ActionListener {
 //                    username.setText("");
 //                    password.setText("");
 //                }
-            }catch (Exception e) {
-                e.printStackTrace();
-            }
-		} 
-                if (ae.getSource() == cancel) {
-			setVisible(false);
-                        new Loginas();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-                if (ae.getSource() == signup) {
-//			setVisible(false);
-                        new RegisterFrame();
-                        
-		
+		if (ae.getSource() == cancel) {
+			setVisible(false);
+			new Loginas();
+		}
+		if (ae.getSource() == signup) {
+			setVisible(false);
+			new RegisterFrame();
+
 		} else if (ae.getSource() == back) {
 			setVisible(false);
 

@@ -26,12 +26,13 @@ public class AddressFrame extends JFrame implements ActionListener {
 	private JTextField flatHouseNum, areaStreetSectorVillage, pincode, townCity, flatHouseNumSec,
 			areaStreetSectorVillageSec, pincodeSec, townCitySec;
 
-        String praaptaank_Id;
+	String praaptaank_Id;
+
 	public AddressFrame(String praaptaank_id) {
 
 		super("Praptank | Student Registration");
-                this.praaptaank_Id =praaptaank_id;
-		setBounds(250, 50, 650, 600);
+		this.praaptaank_Id = praaptaank_id;
+		setBounds(500, 100, 650, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JPanel p = new JPanel();
@@ -180,49 +181,51 @@ public class AddressFrame extends JFrame implements ActionListener {
 
 		if (e.getSource() == prev) {
 			setVisible(false);
-                        new RegisterFrame();
+			new RegisterFrame();
 		}
 
 		if (e.getSource() == next) {
-                    String praaptaank_ID =praaptaank_Id;
-                    String flatno = flatHouseNum.getText();
-                    
-                    String area = areaStreetSectorVillage.getText();
-                    
-                    String pin = pincode.getText();
-                    
-                    String city = townCity.getText();
-                    
-                    String State = (String) state.getSelectedItem();
-                    
-                    String Flatno = flatHouseNumSec.getText();
-                    
-                    String Area = areaStreetSectorVillageSec.getText();
-                    
-                    String Pin = pincodeSec.getText();
-                    
-                    String City = townCitySec.getText();
-                    
-                    String Statesec = (String) stateSec.getSelectedItem();
-                   
-                   try{
-                    ConnectJDBC c = new ConnectJDBC();
-                    
-                    String query = null;
-                    
-                    query ="insert into address_info(Praaptaank_id,flatno,area,pin,city,state,flatnosec,areasec,pinsec,citysec,statesec) values('"+praaptaank_ID+"','"+flatno+"','"+area+"','"+pin+"','"+city+"','"+State+"','"+Flatno+"','"+Area+"','"+Pin+"','"+City+"','"+Statesec+"')";
-                   
-                    c.s.executeUpdate(query);
-                
-                JOptionPane.showMessageDialog(null, "Add Successfully");
-                
-                setVisible(false);
-            }catch (Exception ex) {
-                ex.printStackTrace();
-            }
- 
-			
-                }
+			String praaptaank_ID = praaptaank_Id;
+			String flatno = flatHouseNum.getText();
+
+			String area = areaStreetSectorVillage.getText();
+
+			String pin = pincode.getText();
+
+			String city = townCity.getText();
+
+			String State = (String) state.getSelectedItem();
+
+			String Flatno = flatHouseNumSec.getText();
+
+			String Area = areaStreetSectorVillageSec.getText();
+
+			String Pin = pincodeSec.getText();
+
+			String City = townCitySec.getText();
+
+			String Statesec = (String) stateSec.getSelectedItem();
+
+			try {
+				ConnectJDBC c = new ConnectJDBC();
+
+				String query = null;
+
+				query = "insert into address_info(Praaptaank_id,flatno,area,pin,city,state,flatnosec,areasec,pinsec,citysec,statesec) values('"
+						+ praaptaank_ID + "','" + flatno + "','" + area + "','" + pin + "','" + city + "','" + State
+						+ "','" + Flatno + "','" + Area + "','" + Pin + "','" + City + "','" + Statesec + "')";
+
+				c.s.executeUpdate(query);
+
+				JOptionPane.showMessageDialog(null, "Add Successfully");
+
+				setVisible(false);
+				new Education_Frame();
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+
+		}
 
 	}
 

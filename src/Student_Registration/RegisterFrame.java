@@ -1,6 +1,5 @@
 package Student_Registration;
 
-
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.Date;
@@ -24,296 +23,307 @@ import score.generator.login;
 
 public class RegisterFrame extends JFrame implements ActionListener {
 
-    JLabel message, fileLabel;
-    JLabel nameLabel, fname, mname, dobLabel, genderLabel, dobFormat, Id, PraaptaankId;
-    JTextField nameField, Fname, Mname;
-    JRadioButton genderMale, genderFemale;
-    ButtonGroup genderGroup;
-    JButton fileButton;
+	JLabel message, fileLabel;
+	JLabel nameLabel, fname, mname, dobLabel, genderLabel, dobFormat, Id, PraaptaankId;
+	JTextField nameField, Fname, Mname;
+	JRadioButton genderMale, genderFemale;
+	ButtonGroup genderGroup;
+	JButton fileButton, back;
 
-    JLabel mailIdLabel, mobileNoLabel;
-    JTextField mailIdField, mobileNoField;
+	JLabel mailIdLabel, mobileNoLabel;
+	JTextField mailIdField, mobileNoField;
 
-    JLabel passwordLabel, rePasswordLabel;
-    JPasswordField passwordField, rePasswordField;
+	JLabel passwordLabel, rePasswordLabel;
+	JPasswordField passwordField, rePasswordField;
 
-    JComboBox<String> programList;
+	JComboBox<String> programList;
 
-    JComboBox<String> branchList;
-    JComboBox<Integer> semesterList;
+	JComboBox<String> branchList;
+	JComboBox<Integer> semesterList;
 
-    JButton registerButton;
-    JDatePanelImpl datePanel;
-    JDatePickerImpl datePicker;
+	JButton registerButton;
+	JDatePanelImpl datePanel;
+	JDatePickerImpl datePicker;
 
-    public RegisterFrame() {
+	public RegisterFrame() {
 
-        getContentPane().setBackground(new Color(173, 216, 230));
-        message = new JLabel("Personal Details");
-        message.setFont(new Font("Courier", Font.BOLD, 20));
+		getContentPane().setBackground(new Color(173, 216, 230));
+		setTitle("Student Register Form");
+		setBounds(500, 100, 650, 550);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(true);
 
-        nameLabel = new JLabel("Name:");
-        nameField = new JTextField();
+		message = new JLabel("Personal Details");
+		message.setFont(new Font("Courier", Font.BOLD, 20));
 
-        fname = new JLabel("Father's Name:");
-        Fname = new JTextField();
-        mname = new JLabel("Mother's Name:");
-        Mname = new JTextField();
+		nameLabel = new JLabel("Name:");
+		nameField = new JTextField();
 
-        dobLabel = new JLabel("DOB");
-        //dobField = new JTextField();
+		fname = new JLabel("Father's Name:");
+		Fname = new JTextField();
+		mname = new JLabel("Mother's Name:");
+		Mname = new JTextField();
 
-        /*Adding JDatePicker date picker*/
-        UtilDateModel model = new UtilDateModel();
-        model.setDate(1999, 01, 02);
-        model.setSelected(true);
-        Properties p = new Properties();
-        p.put("text.today", "Today");
-        p.put("text.month", "Month");
-        p.put("text.year", "Year");
-        datePanel = new JDatePanelImpl(model, p);
-        datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
-        dobFormat = new JLabel("");
-        /*End Date picker*/
+		dobLabel = new JLabel("DOB");
+		// dobField = new JTextField();
 
-        genderLabel = new JLabel("Gender");
-        genderMale = new JRadioButton("Male", true);
-        genderFemale = new JRadioButton("Female");
-        genderGroup = new ButtonGroup();
-        genderGroup.add(genderMale);
-        genderGroup.add(genderFemale);
+		/* Adding JDatePicker date picker */
+		UtilDateModel model = new UtilDateModel();
+		model.setDate(1999, 01, 02);
+		model.setSelected(true);
+		Properties p = new Properties();
+		p.put("text.today", "Today");
+		p.put("text.month", "Month");
+		p.put("text.year", "Year");
+		datePanel = new JDatePanelImpl(model, p);
+		datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+		dobFormat = new JLabel("");
+		/* End Date picker */
 
-        mailIdLabel = new JLabel("Mail Id");
-        mailIdField = new JTextField();
+		genderLabel = new JLabel("Gender");
+		genderMale = new JRadioButton("Male", true);
+		genderMale.setBackground(new Color(173, 216, 230));
+		genderFemale = new JRadioButton("Female");
+		genderFemale.setBackground(new Color(173, 216, 230));
+		genderGroup = new ButtonGroup();
+		genderGroup.add(genderMale);
+		genderGroup.add(genderFemale);
 
-        mobileNoLabel = new JLabel("Mobile No");
-        mobileNoField = new JTextField();
+		mailIdLabel = new JLabel("Mail Id");
+		mailIdField = new JTextField();
 
-        Id = new JLabel("Praaptank Id:");
-        PraaptaankId = new JLabel("");
+		mobileNoLabel = new JLabel("Mobile No");
+		mobileNoField = new JTextField();
 
-        passwordLabel = new JLabel("Password");
-        passwordField = new JPasswordField();
+		Id = new JLabel("Praaptank Id:");
+		PraaptaankId = new JLabel("");
 
-        rePasswordLabel = new JLabel("Re Password");
-        rePasswordField = new JPasswordField();
+		passwordLabel = new JLabel("Password");
+		passwordField = new JPasswordField();
 
-        
-        registerButton = new JButton("Save&Next");
+		rePasswordLabel = new JLabel("Re Password");
+		rePasswordField = new JPasswordField();
 
-        setBounds();
-        addActionListener();
-        image();
+		registerButton = new JButton("Save&Next");
 
-    }
+		back = new JButton("←");
+		back.setForeground(Color.black);
 
-    public void setBounds() {
-        setLayout(null);
-        message.setBounds(230, 10, 600, 30);
-        add(message);
+		setBounds();
+		addActionListener();
+		image();
+		setVisible(true);
 
-        nameLabel.setBounds(50, 60, 100, 20);
-        nameField.setBounds(150, 60, 200, 20);
-        add(nameLabel);
-        add(nameField);
+	}
 
-        fname.setBounds(50, 90, 100, 20);
-        Fname.setBounds(150, 90, 200, 20);
-        add(fname);
-        add(Fname);
+	public void setBounds() {
+		setLayout(null);
+		message.setBounds(230, 10, 600, 30);
+		add(message);
 
-        mname.setBounds(50, 120, 100, 20);
-        Mname.setBounds(150, 120, 200, 20);
-        add(mname);
-        add(Mname);
+		nameLabel.setBounds(50, 60, 100, 20);
+		nameField.setBounds(150, 60, 200, 20);
+		add(nameLabel);
+		add(nameField);
 
-        dobLabel.setBounds(50, 150, 100, 20);
-        datePicker.setBounds(150, 150, 200, 30);
-        dobFormat.setBounds(360, 150, 200, 30);
+		fname.setBounds(50, 90, 100, 20);
+		Fname.setBounds(150, 90, 200, 20);
+		add(fname);
+		add(Fname);
+
+		mname.setBounds(50, 120, 100, 20);
+		Mname.setBounds(150, 120, 200, 20);
+		add(mname);
+		add(Mname);
+
+		dobLabel.setBounds(50, 150, 100, 20);
+		datePicker.setBounds(150, 150, 200, 30);
+		dobFormat.setBounds(360, 150, 200, 30);
 //        datePicker.setBackground(Color.WHITE);
-        add(dobLabel);
-        add(datePicker);
-        add(dobFormat);
+		add(dobLabel);
+		add(datePicker);
+		add(dobFormat);
 
-        genderLabel.setBounds(50, 180, 100, 20);
-        genderMale.setBounds(150, 180, 100, 20);
+		genderLabel.setBounds(50, 180, 100, 20);
+		genderMale.setBounds(150, 180, 100, 20);
 //        genderMale.setBackground(Color.WHITE);
-        genderFemale.setBounds(250, 180, 100, 20);
+		genderFemale.setBounds(250, 180, 100, 20);
 //        genderFemale.setBackground(Color.WHITE);
-        add(genderLabel);
-        add(genderMale);
-        add(genderFemale);
+		add(genderLabel);
+		add(genderMale);
+		add(genderFemale);
 
-        mailIdLabel.setBounds(50, 210, 100, 20);
-        mailIdField.setBounds(150, 210, 200, 20);
-        add(mailIdLabel);
-        add(mailIdField);
+		mailIdLabel.setBounds(50, 210, 100, 20);
+		mailIdField.setBounds(150, 210, 200, 20);
+		add(mailIdLabel);
+		add(mailIdField);
 
-        mobileNoLabel.setBounds(50, 240, 100, 20);
-        mobileNoField.setBounds(150, 240, 200, 20);
-        add(mobileNoLabel);
-        add(mobileNoField);
+		mobileNoLabel.setBounds(50, 240, 100, 20);
+		mobileNoField.setBounds(150, 240, 200, 20);
+		add(mobileNoLabel);
+		add(mobileNoField);
 
-        Id.setBounds(50, 270, 100, 20);
-        add(Id);
-        PraaptaankId.setBounds(150, 270, 200, 20);
-        add(PraaptaankId);
+		Id.setBounds(50, 270, 100, 20);
+		add(Id);
+		PraaptaankId.setBounds(150, 270, 200, 20);
+		add(PraaptaankId);
 
-        Random ran = new Random();
-        long number = ran.nextLong() % 1000000;
-        PraaptaankId.setText("" + Math.abs(number));
+		Random ran = new Random();
+		long number = ran.nextLong() % 1000000;
+		PraaptaankId.setText("" + Math.abs(number));
 
-        passwordLabel.setBounds(50, 300, 100, 20);
-        passwordField.setBounds(150, 300, 200, 20);
-        add(passwordLabel);
-        add(passwordField);
+		passwordLabel.setBounds(50, 300, 100, 20);
+		passwordField.setBounds(150, 300, 200, 20);
+		add(passwordLabel);
+		add(passwordField);
 
-        rePasswordLabel.setBounds(50, 330, 100, 20);
-        rePasswordField.setBounds(150, 330, 200, 20);
-        add(rePasswordLabel);
-        add(rePasswordField);
+		rePasswordLabel.setBounds(50, 330, 100, 20);
+		rePasswordField.setBounds(150, 330, 200, 20);
+		add(rePasswordLabel);
+		add(rePasswordField);
 
-       
-        registerButton.setBounds(200, 430, 200, 30);
-        add(registerButton);
-    }
+		registerButton.setBounds(200, 430, 200, 30);
+		add(registerButton);
 
-    public void image() {
-       
-        fileLabel = new JLabel("Add Image:");
-        fileLabel.setBounds(400, 170, 150, 20);
-        add(fileLabel);
+		back.setBounds(0, 0, 50, 20);
+		add(back);
+	}
 
-        fileButton = new JButton("Choose File");
-        fileButton.setBounds(470, 170, 150, 20);
-        fileButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFileChooser fileChooser = new JFileChooser();
-                FileNameExtensionFilter filter = new FileNameExtensionFilter("Image Files", "PNG", "jpeg", "jpg");
-                fileChooser.setFileFilter(filter);
-                int result = fileChooser.showOpenDialog(fileButton);
-                if (result == JFileChooser.APPROVE_OPTION) {
-                    File selectedFile = fileChooser.getSelectedFile();
-                    fileButton.setText("Change File");
+	public void image() {
 
-                    ImageIcon i1 = new ImageIcon(selectedFile.getAbsolutePath());
-                    Image i2 = i1.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
-                    ImageIcon i3 = new ImageIcon(i2);
-                    JLabel image = new JLabel(i3);
+		fileLabel = new JLabel("Add Image:");
+		fileLabel.setBounds(400, 170, 150, 20);
+		add(fileLabel);
 
-                    Component[] components = getContentPane().getComponents();
-                    for (Component c : components) {
-                        if (c instanceof JLabel && ((JLabel) c).getIcon() != null) {
-                            getContentPane().remove(c);
-                        }
-                    }
-                    image.setBounds(450, 60, 100, 100);
-                    getContentPane().add(image,BorderLayout.CENTER);
-                    image.setBorder(BorderFactory.createLineBorder(Color.black));
-                    revalidate();
-                    repaint();
-                }
-            }
-        });
-        add(fileButton);
-            }
+		fileButton = new JButton("Choose File");
+		fileButton.setBounds(470, 170, 150, 20);
+		fileButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser fileChooser = new JFileChooser();
+				FileNameExtensionFilter filter = new FileNameExtensionFilter("Image Files", "PNG", "jpeg", "jpg");
+				fileChooser.setFileFilter(filter);
+				int result = fileChooser.showOpenDialog(fileButton);
+				if (result == JFileChooser.APPROVE_OPTION) {
+					File selectedFile = fileChooser.getSelectedFile();
+					fileButton.setText("Change File");
 
-            public void addActionListener() {
-                registerButton.addActionListener(this);
-            }
+					ImageIcon i1 = new ImageIcon(selectedFile.getAbsolutePath());
+					Image i2 = i1.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+					ImageIcon i3 = new ImageIcon(i2);
+					JLabel image = new JLabel(i3);
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+					Component[] components = getContentPane().getComponents();
+					for (Component c : components) {
+						if (c instanceof JLabel && ((JLabel) c).getIcon() != null) {
+							getContentPane().remove(c);
+						}
+					}
+					image.setBounds(450, 60, 100, 100);
+					getContentPane().add(image, BorderLayout.CENTER);
+					image.setBorder(BorderFactory.createLineBorder(Color.black));
+					revalidate();
+					repaint();
+				}
+			}
+		});
+		add(fileButton);
+	}
 
-                if (e.getSource() == registerButton) {
-                    System.out.println("Register Button Clicked");
-                    String gender = null;
-                    if (genderFemale.isSelected()) {
-                        gender = "Female";
-                    }
-                    if (genderMale.isSelected()) {
-                        gender = "Male";
-                    }
-            
-                    String dobString = datePicker.getJFormattedTextField().getText();
-                    if (dobString.isEmpty()) {
-                        JOptionPane.showMessageDialog(null, "Date of Birth is Empty");
-                        return;
-                    }
-                    Date dob;
-                    try {
-                        dob = Date.valueOf(dobString);
-                    } catch (IllegalArgumentException ex) {
-                        System.out.println("Exception " + ex);
-                        JOptionPane.showMessageDialog(null, "Date of birth format is in correct");
-                        return;
-                    }
-                    System.out.println("Praaptaank_id " + PraaptaankId.getText() +"name " + nameField.getText() +"name " + fname.getText() +"name " + mname.getText() + " dob " + dobString
-                            + " gender " + gender + " mailid " + mailIdField.getText()
-                            + " mobileNo " + mobileNoField.getText() + " password " + passwordField.getText()
-                            + " rePassword " + rePasswordField.getText() );
+	public void addActionListener() {
+		registerButton.addActionListener(this);
+		back.addActionListener(this);
+	}
 
-                    Student student = new Student(PraaptaankId.getText(),nameField.getText(),Fname.getText(),Mname.getText(), dob, gender, mailIdField.getText(), mobileNoField.getText(), passwordField.getText(), rePasswordField.getText());
-                    student.setEncPassword(BCrypt.hashpw(student.getPassword(), BCrypt.gensalt()));
-                    Validation v = new Validation();
-                    java.util.List<String> errors = v.validateRegistration(student);
-                    if (errors.size() > 0) {
-                        JOptionPane.showMessageDialog(null, errors.toArray());
-                        return;
-                    }
-                    RegisterData dao = new RegisterData();
-                        int st = dao.registerStudent(student);
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		if(e.getSource() == back) {
+			setVisible(false);
+			new StudentLogin();
+		}
 
-                    System.out.println(st);
-                    if (st == 1) {
-                        JOptionPane.showMessageDialog(null, "Registered Successfully");
-                       
+		if (e.getSource() == registerButton) {
+//			System.out.println("Register Button Clicked");
+			String gender = null;
+			if (genderFemale.isSelected()) {
+				gender = "Female";
+			}
+			if (genderMale.isSelected()) {
+				gender = "Male";
+			}
 
-                        setVisible(false);
-                        new AddressFrame(student.getPid());
+			String dobString = datePicker.getJFormattedTextField().getText();
+			if (dobString.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Date of Birth is Empty");
+				return;
+			}
+			Date dob;
+			try {
+				dob = Date.valueOf(dobString);
+			} catch (IllegalArgumentException ex) {
+				System.out.println("Exception " + ex);
+				JOptionPane.showMessageDialog(null, "Date of birth format is in correct");
+				return;
+			}
+			System.out.println("Praaptaank_id " + PraaptaankId.getText() + "name " + nameField.getText() + "name "
+					+ fname.getText() + "name " + mname.getText() + " dob " + dobString + " gender " + gender
+					+ " mailid " + mailIdField.getText() + " mobileNo " + mobileNoField.getText() + " password "
+					+ passwordField.getText() + " rePassword " + rePasswordField.getText());
 
+			Student student = new Student(PraaptaankId.getText(), nameField.getText(), Fname.getText(), Mname.getText(),
+					dob, gender, mailIdField.getText(), mobileNoField.getText(), passwordField.getText(),
+					rePasswordField.getText());
+			student.setEncPassword(BCrypt.hashpw(student.getPassword(), BCrypt.gensalt()));
+			Validation v = new Validation();
+			java.util.List<String> errors = v.validateRegistration(student);
+			if (errors.size() > 0) {
+				JOptionPane.showMessageDialog(null, errors.toArray());
+				return;
+			}
+			RegisterData dao = new RegisterData();
+			int st = dao.registerStudent(student);
 
-                    }
-                    if (st == -1) {
-                        JOptionPane.showMessageDialog(null, "Already Registered");
-                    }
-                    if (st == -2) {
-                        JOptionPane.showMessageDialog(null, "OOps Unable to Register");
-                    }
-                }
-            }
+			System.out.println(st);
+			if (st == 1) {
+				JOptionPane.showMessageDialog(null, "Registered Successfully");
 
-            public static void main(String[] args) {
-                new RegisterFrame();
-                RegisterFrame frame = new RegisterFrame();
-                frame.setTitle("Student Register Form");
-                frame.setBounds(500, 100, 650, 550);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setResizable(true);
-                frame.setVisible(true);
+				setVisible(false);
+				new AddressFrame(student.getPid());
 
-            }
+			}
+			if (st == -1) {
+				JOptionPane.showMessageDialog(null, "Already Registered");
+			}
+			if (st == -2) {
+				JOptionPane.showMessageDialog(null, "OOps Unable to Register");
+			}
+		}
+	}
 
-            public class DateLabelFormatter extends AbstractFormatter {
+	public static void main(String[] args) {
+		new RegisterFrame();
 
-                private String datePattern = "yyyy-MM-dd";
-                private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
+	}
 
-                @Override
-                public Object stringToValue(String text) throws ParseException {
-                    return dateFormatter.parseObject(text);
-                }
+	public class DateLabelFormatter extends AbstractFormatter {
 
-                @Override
-                public String valueToString(Object value) throws ParseException {
-                    if (value != null) {
-                        Calendar cal = (Calendar) value;
-                        return dateFormatter.format(cal.getTime());
-                    }
+		private String datePattern = "yyyy-MM-dd";
+		private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
 
-                    return "";
-                }
+		@Override
+		public Object stringToValue(String text) throws ParseException {
+			return dateFormatter.parseObject(text);
+		}
 
-            }
-        }
+		@Override
+		public String valueToString(Object value) throws ParseException {
+			if (value != null) {
+				Calendar cal = (Calendar) value;
+				return dateFormatter.format(cal.getTime());
+			}
+
+			return "";
+		}
+	}
+}
