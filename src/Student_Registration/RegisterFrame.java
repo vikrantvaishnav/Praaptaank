@@ -285,7 +285,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
             }
 
             public static void main(String[] args) {
-                new RegisterFrame();
+//                new RegisterFrame();
                 RegisterFrame frame = new RegisterFrame();
                 frame.setTitle("Student Register Form");
                 frame.setBounds(500, 100, 650, 550);

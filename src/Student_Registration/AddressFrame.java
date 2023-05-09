@@ -180,7 +180,13 @@ public class AddressFrame extends JFrame implements ActionListener {
 
 		if (e.getSource() == prev) {
 			setVisible(false);
-                        new RegisterFrame();
+                        setVisible(false);
+                        RegisterFrame registerFrame = new RegisterFrame();
+                        registerFrame.setTitle("Student Register Form");
+                        registerFrame.setBounds(500, 100, 650, 550);
+                        registerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        registerFrame.setResizable(true);
+                        registerFrame.setVisible(true);
 		}
 
 		if (e.getSource() == next) {
@@ -217,6 +223,7 @@ public class AddressFrame extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Add Successfully");
                 
                 setVisible(false);
+                new Education_Frame();
             }catch (Exception ex) {
                 ex.printStackTrace();
             }

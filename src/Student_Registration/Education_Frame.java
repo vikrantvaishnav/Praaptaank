@@ -81,7 +81,7 @@ public class Education_Frame extends JFrame implements ActionListener {
 
         if (e.getSource() == back) {
             setVisible(false);
-//			new AddressFrame();
+            new AddressFrame("");
         }
 
         if (e.getSource() == addEducationButton) {

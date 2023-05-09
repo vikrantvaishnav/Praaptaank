@@ -131,8 +131,13 @@ public class StudentLogin extends JFrame implements ActionListener {
                         new Loginas();
 		}
                 if (ae.getSource() == signup) {
-//			setVisible(false);
-                        new RegisterFrame();
+                    setVisible(false);
+                    RegisterFrame registerFrame = new RegisterFrame();
+                    registerFrame.setTitle("Student Register Form");
+                    registerFrame.setBounds(500, 100, 650, 550);
+                    registerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    registerFrame.setResizable(true);
+                    registerFrame.setVisible(true);
                         
 		
 		} else if (ae.getSource() == back) {
