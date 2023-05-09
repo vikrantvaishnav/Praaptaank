@@ -123,12 +123,19 @@ public class login extends JFrame implements ActionListener{
             String id = username.getText();
             String pass = password.getText();
             
+             Connection c = null;
+                
             
             try{
-                ConnectJDBC c = new ConnectJDBC();
-                String query = "select * from login where Praaptaank_Id ='"+id+"' and Password = '"+pass+"'";
+               c = ConnectJDBC.getConnection();
+               
+                String query = "select * from login where Praaptaank_Id = ? AND Password = ?";
+                PreparedStatement ps = c.prepareStatement(query);
+                ps.setString(1, id);
+                ps.setString(2, pass);
                 
-                ResultSet rs = c.s.executeQuery(query);
+                ResultSet rs = ps.executeQuery();
+//                  int rowsInserted = statement.executeUpdate();
                 
                 if(rs.next()){
                     String Id = rs.getString("Praaptaank_Id");
@@ -145,6 +152,7 @@ public class login extends JFrame implements ActionListener{
             }
         }else if (ae.getSource() == cancel) {
             setVisible(false);
+            new Loginas();
         } else if (ae.getSource() == signup) {
             setVisible(false);
             

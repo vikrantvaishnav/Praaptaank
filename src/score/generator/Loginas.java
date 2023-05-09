@@ -1,5 +1,6 @@
 package score.generator;
 
+import Student_Registration.StudentLogin;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.*;
@@ -12,7 +13,7 @@ import javax.swing.*;
 public class Loginas extends JFrame implements ActionListener{
     JButton Student,College;
     
-    Loginas(){
+    public Loginas(){
         
         super("Praaptank:-Login");
         setBounds(600,250,900,600);
@@ -78,7 +79,7 @@ public class Loginas extends JFrame implements ActionListener{
         public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == Student) {
             setVisible(false); 
-            new login(); 
+            new StudentLogin();
         } else if (ae.getSource() == College) {
             setVisible(false);
             
