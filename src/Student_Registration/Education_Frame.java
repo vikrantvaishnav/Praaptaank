@@ -261,7 +261,7 @@ public class Education_Frame extends JFrame implements ActionListener {
                         completeButton.addActionListener(new ActionListener() {
                             public void actionPerformed(ActionEvent e) {
                                 setVisible(false);
-//                              new RegisterStudent4();
+                              new StudentReview();
                             }
                         });
                         p.add(completeButton);
@@ -440,7 +440,7 @@ public class Education_Frame extends JFrame implements ActionListener {
                         completeButton.addActionListener(new ActionListener() {
                             public void actionPerformed(ActionEvent e) {
                                 setVisible(false);
-//                              new RegisterStudent4();
+                              new StudentReview();
                             }
                         });
                         p.add(completeButton);
@@ -728,7 +728,7 @@ public class Education_Frame extends JFrame implements ActionListener {
                         completeButton.addActionListener(new ActionListener() {
                             public void actionPerformed(ActionEvent e) {
                                 setVisible(false);
-//                              new RegisterStudent4();
+                              new StudentReview();
                             }
                         });
                         p.add(completeButton);
@@ -978,7 +978,7 @@ public class Education_Frame extends JFrame implements ActionListener {
                         completeButton.addActionListener(new ActionListener() {
                             public void actionPerformed(ActionEvent e) {
                                 setVisible(false);
-//                              new RegisterStudent4();
+                              new StudentReview();
                             }
                         });
                         p.add(completeButton);
@@ -1173,7 +1173,7 @@ public class Education_Frame extends JFrame implements ActionListener {
                         completeButton.addActionListener(new ActionListener() {
                             public void actionPerformed(ActionEvent e) {
                                 setVisible(false);
-//                              new RegisterStudent4();
+                              new StudentReview();
                             }
                         });
                         p.add(completeButton);

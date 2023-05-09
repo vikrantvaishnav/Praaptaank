@@ -29,7 +29,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
     JTextField nameField, Fname, Mname;
     JRadioButton genderMale, genderFemale;
     ButtonGroup genderGroup;
-    JButton fileButton;
+    JButton fileButton, back;
 
     JLabel mailIdLabel, mobileNoLabel;
     JTextField mailIdField, mobileNoField;
@@ -100,6 +100,12 @@ public class RegisterFrame extends JFrame implements ActionListener {
 
         
         registerButton = new JButton("Save&Next");
+        
+        back = new JButton("←");
+        back.setForeground(Color.black);
+        back.setBounds(0, 0, 50, 20);
+        back.addActionListener(this);
+        add(back);
 
         setBounds();
         addActionListener();
@@ -225,6 +231,11 @@ public class RegisterFrame extends JFrame implements ActionListener {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+            	
+            	if(e.getSource() == back) {
+            		setVisible(false);
+            		new StudentLogin();
+            	}
 
                 if (e.getSource() == registerButton) {
                     System.out.println("Register Button Clicked");
