@@ -12,7 +12,7 @@ public class flash extends JFrame implements Runnable{
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/background.jpg"));
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/back.jpg"));
         Image i2 = i1.getImage().getScaledInstance(screenSize.width, screenSize.height, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel image = new JLabel(i3);

@@ -1,11 +1,15 @@
 package Student_Registration;
 
+import Database.ConnectJDBC;
 import java.awt.Color;
 import javax.swing.*;
 import score.generator.Loginas;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
+import java.util.Base64;
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 public class StudentLogin extends JFrame implements ActionListener {
 
@@ -105,23 +109,54 @@ public class StudentLogin extends JFrame implements ActionListener {
 		if (ae.getSource() == login) {
             String id = username.getText();
             String pass = password.getText();
-            
+             Connection c = null;
             try{
-//                ConnectJDBC c = new ConnectJDBC();
-//                String query = "select * from login where Praaptaank_Id ='"+id+"' and Password = '"+pass+"'";
-//                
-//                ResultSet rs = c.s.executeQuery(query);
-//                
-//                if(rs.next()){
-//                    String Id = rs.getString("Praaptaank_Id");
-//                    setVisible(false);
-//                    new project(Id);
-//                    
-//                }else {
-//                    JOptionPane.showMessageDialog(null, "Invalid Login");
-//                    username.setText("");
-//                    password.setText("");
+                c = ConnectJDBC.getConnection();
+                String query = "select * from student_personal_detail where Praaptaank_id = ? AND Password = ?";
+                PreparedStatement ps = c.prepareStatement(query);
+                ps.setString(1, id);
+                ps.setString(2, pass);
+                ResultSet rs = ps.executeQuery();
+                
+//                String encryptedPassword = null;
+//                if (rs.next()) {
+//                encryptedPassword = rs.getString("password");
 //                }
+                
+//                SecretKeySpec key = new SecretKeySpec("MySecretKey12345".getBytes(), "AES");
+//                Cipher cipher = Cipher.getInstance("AES");
+//                cipher.init(Cipher.DECRYPT_MODE, key);
+//                String decryptedPassword = null;
+//                try {
+//                decryptedPassword = new String(cipher.doFinal(Base64.getDecoder().decode(encryptedPassword)));
+//            } catch (IllegalArgumentException ex) {
+//                JOptionPane.showMessageDialog(null, "Invalid Login");
+//                username.setText("");
+//                password.setText("");
+//                return;
+//            }
+//                if (pass.equals(decryptedPassword)) {
+//                String Id = rs.getString("Praaptaank_id");
+//                setVisible(false);
+//                new Personal_Details(Id);
+//                 } else {
+//                JOptionPane.showMessageDialog(null, "Invalid Login");
+//                username.setText("");
+//                password.setText("");
+//            }
+                
+                
+                
+                if(rs.next()){
+                    String Idd = rs.getString("Praaptaank_id");
+                    setVisible(false);
+                    new projectPage(Idd);
+                    
+                }else {
+                    JOptionPane.showMessageDialog(null, "Invalid Login");
+                    username.setText("");
+                    password.setText("");
+                }
             }catch (Exception e) {
                 e.printStackTrace();
             }

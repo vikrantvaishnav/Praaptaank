@@ -31,7 +31,7 @@ public class RegisterData {
             ps.setString(6, student.getGender());
             ps.setString(7, student.getMailId());
             ps.setString(8, student.getMobileNo());
-            ps.setString(9, student.getEncPassword());
+            ps.setString(9, student.getPassword());
            
             st = ps.executeUpdate();
             System.out.println("Inserted  student " + st);
