@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
-import score.generator.ScoreInputFrame;
 
 public class HomePanel extends JPanel implements ActionListener{
     

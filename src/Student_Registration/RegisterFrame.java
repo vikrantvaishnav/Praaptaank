@@ -1,6 +1,8 @@
 package Student_Registration;
 
 
+import com.mysql.jdbc.Connection;
+import java.sql.DriverManager;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.Date;
@@ -11,7 +13,6 @@ import java.util.Properties;
 import java.util.Random;
 import javax.swing.*;
 import java.io.File;
-import java.sql.ResultSet;
 /*imports for JDatePicker*/
 import javax.swing.JFormattedTextField.AbstractFormatter;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -202,6 +203,14 @@ public class RegisterFrame extends JFrame implements ActionListener {
                 if (result == JFileChooser.APPROVE_OPTION) {
                     File selectedFile = fileChooser.getSelectedFile();
                     fileButton.setText("Change File");
+                    
+                    try (java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/credit_score?useUnicode=true&characterEncoding=UTF-8", "root", "zxc@7410")) {
+                        // Insert image file
+//                        insertFile(conn, 1, selectedFile.getName(), selectedFile);
+                        } catch (Exception ex) {
+                                ex.printStackTrace();
+                    }
+                    
 
                     ImageIcon i1 = new ImageIcon(selectedFile.getAbsolutePath());
                     Image i2 = i1.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);

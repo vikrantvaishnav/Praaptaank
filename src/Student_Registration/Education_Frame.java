@@ -74,6 +74,7 @@ public class Education_Frame extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
         new Education_Frame();
+        
     }
 
     @Override
@@ -262,7 +263,7 @@ public class Education_Frame extends JFrame implements ActionListener {
                             public void actionPerformed(ActionEvent e) {
                                 setVisible(false);
 
-                                 new StudentLogin();
+                                 new AddCertificate();
 //                              new StudentReview();
                             }
                         });
@@ -442,7 +443,7 @@ public class Education_Frame extends JFrame implements ActionListener {
                         completeButton.addActionListener(new ActionListener() {
                             public void actionPerformed(ActionEvent e) {
                                 setVisible(false);
-                              new StudentLogin();
+                              new AddCertificate();
 //                              new StudentReview();
                             }
                         });
@@ -731,7 +732,8 @@ public class Education_Frame extends JFrame implements ActionListener {
                         completeButton.addActionListener(new ActionListener() {
                             public void actionPerformed(ActionEvent e) {
                                 setVisible(false);
-                              new StudentLogin();
+                                
+                                new AddCertificate();
                               
 //                              new StudentReview();
                             }
@@ -983,7 +985,7 @@ public class Education_Frame extends JFrame implements ActionListener {
                         completeButton.addActionListener(new ActionListener() {
                             public void actionPerformed(ActionEvent e) {
                                 setVisible(false);
-                                new StudentLogin();
+                                new AddCertificate();
 //                              new StudentReview();
                             }
                         });
@@ -1180,7 +1182,7 @@ public class Education_Frame extends JFrame implements ActionListener {
                             public void actionPerformed(ActionEvent e) {
                                 setVisible(false);
                                 
-                              new StudentLogin();
+                                new AddCertificate();
 //                              new StudentReview();
                             }
                         });
